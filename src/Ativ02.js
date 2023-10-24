@@ -5,6 +5,6 @@ function Ativ02() {
             <h1> Atividade 02</h1>
             <Link to="/">Retornar para a página inicial</Link>
         </>
-    )
+    );
 }
 export default Ativ02;
