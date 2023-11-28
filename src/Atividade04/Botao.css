@@ -1,0 +1,47 @@
+
+.numero,
+.numero-2 {
+    font-size: 1.4rem;
+    background-color: black;
+    color: white;
+    border: 1px solid grey;
+    outline: none;
+    cursor: pointer; 
+}
+
+.numero:hover,
+.numero-2:hover {
+    background-color: #333; 
+}
+
+
+.operador,
+.operador-2 {
+    background-color: orange;
+    color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.operador:hover,
+.operador-2:hover {
+    background-color: #ff8c00; 
+}
+
+
+.numero:active,
+.numero-2:active,
+.operador:active,
+.operador-2:active {
+    background-color: white;
+    color: black;
+}
+
+
+.numero,
+.numero-2,
+.operador,
+.operador-2 {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out; 
+}
