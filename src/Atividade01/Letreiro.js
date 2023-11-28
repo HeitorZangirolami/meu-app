@@ -11,7 +11,7 @@ class Letreiro extends Component {
       texto: "",
     };
 
-   
+    
     this.intervalId = setInterval(() => {
       this.atualizarTexto();
     }, 300);
