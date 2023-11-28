@@ -11,7 +11,7 @@ class Letreiro extends Component {
       texto: "",
     };
 
-    // Configure o intervalo para atualizar o texto a cada segundo no construtor
+   
     this.intervalId = setInterval(() => {
       this.atualizarTexto();
     }, 300);
