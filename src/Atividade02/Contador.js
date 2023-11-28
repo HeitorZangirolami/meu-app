@@ -1,101 +1,102 @@
 import React, { useState } from 'react';
-import imgMais from './images/mais.png';
-import imgMenos from './images/menos.png';
-import imgHomem from './images/homem.png';
-import imgMulher from './images/mulher.png';
-import imgResete from './images/resete.png';
-
+import imgMan from './images/man.png';
+import imgWoman from './images/woman.png';
+import imgRefresh from './images/refresh.png';
+import imgPlus from './images/plus.png';
+import imgMinus from './images/minus.png';
 import './Contador.css';
 
-const Contador = () => {
-  const [counts, setCounts] = useState({
-    homem: 0,
-    mulher: 0,
-    total: 0,
-  });
+function Contador () {
+  const [manCount, setManCount] = useState(0);
+  const [womanCount, setWomanCount] = useState(0);
+  const [count, setCount] = useState(0);
+ 
 
-  const handleReset = () => {
-    setCounts({ homem: 0, mulher: 0, total: 0 });
-  };
+  function refreshCount() {
+    setCount(0);
+    setManCount(0);
+    setWomanCount(0);
+  }
+  
+  function addCount() {
+    setCount(count + 1)
+  }
+  
+  function minusCount() {
+    setCount(count - 1)
+  }
+  
+  function addManCount() {
+    setManCount(manCount + 1);
+    addCount();
+  }
 
-  const handleAdd = () => {
-    setCounts((prevCounts) => ({
-      ...prevCounts,
-      total: prevCounts.total + 1,
-    }));
-  };
+  function minusManCount() {
+    setManCount(manCount - 1);
+    minusCount();
+  }
+  
+  function addWomanCount() {
+    setWomanCount(womanCount + 1);
+    addCount();
+  }
+  
+  function minusWomanCount() {
+    setWomanCount(womanCount - 1);
+    minusCount();
 
-  const handleMinus = () => {
-    setCounts((prevCounts) => ({
-      ...prevCounts,
-      total: prevCounts.total - 1,
-    }));
-  };
+  }
 
-  const handleAddPerson = (gender) => {
-    setCounts((prevCounts) => ({
-      ...prevCounts,
-      [gender]: prevCounts[gender] + 1,
-      total: prevCounts.total + 1,
-    }));
-  };
-
-  const handleMinusPerson = (gender) => {
-    setCounts((prevCounts) => ({
-      ...prevCounts,
-      [gender]: prevCounts[gender] - 1,
-      total: prevCounts.total - 1,
-    }));
-  };
-
-  return (
-    <div className='Contador-contador-full'>
-      <div className='Contador-header'>
-        <h1 className='Contador-title'>Total</h1>
-        <button className='Contador-button' onClick={handleReset}>
-          <img className='Contador-button-img' src={imgResete} alt='Reset' />
-        </button>
-      </div>
-      <p className='Contador-contador'>{counts.total}</p>
-
-      <div className='Contador-body'>
-        <Person
-          gender='homem'
-          img={imgHomem}
-          onAdd={() => handleAddPerson('homem')}
-          onMinus={() => handleMinusPerson('homem')}
-          count={counts.homem}
-        />
-
-        <Person
-          gender='mulher'
-          img={imgMulher}
-          onAdd={() => handleAddPerson('mulher')}
-          onMinus={() => handleMinusPerson('mulher')}
-          count={counts.mulher}
-        />
-      </div>
+  return (  
+  <div className='Contador-contador-full'>
+    <div className='Contador-header'> 
+      <h1 className='Contador-title'>Total</h1>
+      <button className='Contador-button' onClick={refreshCount}>
+        <img className='Contador-button-img' src={imgRefresh} />
+      </button>
     </div>
-  );
-};
-
-const Person = ({ gender, img, onAdd, onMinus, count }) => {
-  return (
-    <div className='Contador-person'>
-      <img src={img} alt={gender} />
-      <div className='Contador-buttons'>
-        <button className='Contador-button' onClick={onAdd}>
-          <img className='Contador-button-img' src={imgMais} alt='Mais' />
-        </button>
-        <button className='Contador-button' onClick={onMinus}>
-          <img className='Contador-button-img' src={imgMenos} alt='Menos' />
-        </button>
+    <p className='Contador-contador'>{count}</p>
+    
+    {/* body div */}
+    <div className='Contador-body'>
+      {/* man */}
+      <div className='Contador-person'>
+        <img src={imgMan} />
+        <div className='Contador-buttons'>
+          <button className='Contador-button' onClick={addManCount}>
+              <img className='Contador-button-img' src={imgPlus}/>
+          </button>
+          <button className='Contador-button' onClick={minusManCount}>
+              <img className='Contador-button-img' src={imgMinus}/>
+          </button>
+        </div>
+        <h1>Total</h1>
+        <p className='Contador-contador'>{manCount}</p>
       </div>
-      <h1>Total</h1>
-      <p className='Contador-contador'>{count}</p>
+
+
+      {/* woman */}
+      <div  className='Contador-person'> 
+        <img src={imgWoman}/>
+        <div className='Contador-buttons'>
+          <button className='Contador-button' onClick={addWomanCount}>
+              <img className='Contador-button-img' src={imgPlus}/>
+          </button>
+          <button className='Contador-button' onClick={minusWomanCount}>
+              <img className='Contador-button-img' src={imgMinus}/>
+          </button>
+        </div>
+        <h1>Total</h1>
+        <p className='Contador-contador'>{womanCount}</p>
+      </div>
+
     </div>
+  
+  
+  </div>
   );
-};
+
+}
+
 
 export default Contador;
-

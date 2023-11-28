@@ -1,12 +1,12 @@
-import imgHomem from './images/homem.png';
+import imgMan from './images/man.png';
 import './ToDoList.css';
 
 
 const person = {
-  name: "SATORU GOJO",
+  name: "Gabriel Zampieri",
   theme : {
-    backgroundColor: 'orange',
-    color: 'blue'
+    backgroundColor: 'black',
+    color: 'pink'
   }
 };
 
@@ -16,13 +16,13 @@ function ToDoList() {
       <h1>{person.name}'s Todos</h1>
       <img
         className='avatar'
-        src={imgHomem}
-        alt="SATORU GOJO"
+        src={imgMan}
+        alt="Gabriel Zampieri"
       />
       <ul>
-        <li>é isso filho</li>
-        <li>Estou cansado</li>
-        <li>é isso</li>
+        <li>Improve the videophone</li>
+        <li>Prepare aeronautics lectures</li>
+        <li>Work on the alcohol-fuelled engine</li>
       </ul>
     </div>
   );

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Letreiro.css';
 
-class Letreiro extends Component {
+class Letreiro extends React.Component {
   constructor(props) {
     super(props);
     this.textoTotal = " Conheça a Fatec";
@@ -11,29 +11,26 @@ class Letreiro extends Component {
       texto: "",
     };
 
-    
-    this.intervalId = setInterval(() => {
+    // Configure o intervalo para atualizar o texto a cada segundo no construtor
+    setInterval(() => {
       this.atualizarTexto();
     }, 300);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
-  }
-
   atualizarTexto() {
-    if (this.i < this.textoTotal.length - 1) {
+    if (this.i < this.textoTotal.length-1) {
       this.setState((prevState) => ({
         texto: prevState.texto + this.textoTotal[this.i],
       }));
       this.i++;
     } else {
       this.i = 0;
-
+      this.texto = "";
+      
       this.setState(() => ({
         texto: "",
-        i: 0,
-      }));
+        i: 0
+    }));
     }
   }
 
@@ -49,4 +46,3 @@ class Letreiro extends Component {
 }
 
 export default Letreiro;
-
